@@ -2,9 +2,13 @@ part of '../select_list_input.dart';
 
 class SelectListInput extends StatefulWidget {
   final TextEditingController controller;
+  final String? labelText;
   final Function() onTap;
   const SelectListInput(
-      {super.key, required this.controller, required this.onTap});
+      {super.key,
+      required this.controller,
+      required this.onTap,
+      this.labelText});
 
   @override
   State<SelectListInput> createState() => _SelectListInputState();
@@ -12,6 +16,7 @@ class SelectListInput extends StatefulWidget {
 
 class _SelectListInputState extends State<SelectListInput> {
   TextEditingController get controller => widget.controller;
+  String? get labelText => widget.labelText;
   Function() get onTap => widget.onTap;
 
   IconButton get downIcon =>
@@ -39,6 +44,7 @@ class _SelectListInputState extends State<SelectListInput> {
       controller: controller,
       readOnly: true,
       decoration: InputDecoration(
+        labelText: labelText,
         suffixIcon: _getSuffixIcon,
       ),
     );
