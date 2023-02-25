@@ -4,10 +4,12 @@ class SelectListInput extends StatefulWidget {
   final TextEditingController controller;
   final String? labelText;
   final Function() onTap;
+  final String? Function(String?)? validator;
   const SelectListInput(
       {super.key,
       required this.controller,
       required this.onTap,
+      this.validator,
       this.labelText});
 
   @override
@@ -40,6 +42,7 @@ class _SelectListInputState extends State<SelectListInput> {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      validator: widget.validator,
       onTap: onTap,
       controller: controller,
       readOnly: true,
